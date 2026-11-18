@@ -45,8 +45,9 @@ if [[ ${1-} != --config-only ]]; then
     fi
 
     sudo dnf install bash-completion eza bat fzf fd-find zoxide btop fastfetch \
-        git git-delta gh ripgrep jq neovim helix tree curl wget2-wget zip unzip xz \
-        nodejs nodejs-npm python3-pip java-25-openjdk-headless uv fontconfig
+        git git-delta gh ripgrep jq neovim helix tree curl wget2-wget zip unzip xz fontconfig
+
+    "$repo/install-languages.sh"
 
     work_dir=$(mktemp -d)
     trap 'rm -rf -- "$work_dir"' EXIT

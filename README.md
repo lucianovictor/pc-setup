@@ -9,7 +9,10 @@ Configuração do Bash e inventário do meu Fedora KDE.
 ./install.sh --apps        # Também instala os aplicativos de desktop
 ./install.sh --config-only # Copia somente os arquivos de configuração
 ./install-apps.sh          # Instala só Ghostty, Zed e Zen Browser
+./install-languages.sh     # Instala só as linguagens e ferramentas de desenvolvimento
 ```
+
+O `install-languages.sh` instala Python com `python`, `python3`, pip e uv, Node.js com npm e npx, o runtime Java 25 que está neste PC e os compiladores GCC para C e C++. O setup principal também chama esse script.
 
 O `install-apps.sh` usa o COPR para o Ghostty, o instalador oficial para o Zed e o Flathub para o Zen Browser. Execute como usuário comum. O script chama `sudo` quando precisa instalar pacotes do Fedora. [Ghostty](https://ghostty.org/docs/install/binary#fedora) · [Zed](https://zed.dev/docs/installation#linux) · [Zen Browser](https://docs.zen-browser.app/guides/install-linux)
 
