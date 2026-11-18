@@ -1,0 +1,33 @@
+# Carrega o ble.sh antes dos scripts que registram atalhos no Bash.
+if [[ $- == *i* && -t 0 && -t 1 && -t 2 && -z ${BLE_VERSION-} ]]; then
+    blesh=${XDG_DATA_HOME:-$HOME/.local/share}/blesh/ble.sh
+    [[ ! -r $blesh ]] || source "$blesh" --attach=none
+    unset blesh
+fi
+
+[[ ! -r /etc/bashrc ]] || source /etc/bashrc
+
+# Mantém os binários locais e o OpenCode no PATH.
+for dir in "$HOME/bin" "$HOME/.local/bin" "$HOME/.opencode/bin"; do
+    case ":$PATH:" in
+        *":$dir:"*) ;;
+        *) PATH="$dir:$PATH" ;;
+    esac
+done
+export PATH
+unset dir
+
+for rc in "$HOME"/.bashrc.d/*; do
+    [[ ! -f $rc ]] || source "$rc"
+done
+unset rc
+
+if [[ $- == *i* ]]; then
+    modern=${XDG_CONFIG_HOME:-$HOME/.config}/bash/modern.sh
+    [[ ! -r $modern ]] || source "$modern"
+    unset modern
+
+    if [[ ${BLE_VERSION-} ]]; then
+        ble-attach
+    fi
+fi

@@ -1,0 +1,102 @@
+add_newline = false
+format = '\[$username$hostname $directory\]$git_branch$python$nodejs$golang$rust$java$php$ruby$lua$c$dotnet$kotlin$docker_context$terraform$kubernetes$aws $character'
+
+[username]
+show_always = true
+format = "[$user]($style)"
+style_user = "bold blue"
+
+[hostname]
+ssh_only = false
+format = "[@$hostname]($style)"
+style = "bold blue"
+
+[directory]
+truncation_length = 3
+format = "[$path]($style)"
+style = "bold cyan"
+
+[git_branch]
+symbol = "\uf418 "
+format = '( \[[$symbol$branch]($style)\])'
+style = "bold purple"
+
+[python]
+symbol = "\ue235 "
+format = '( \[[$symbol$version( $virtualenv)]($style)\])'
+style = "bold yellow"
+
+[nodejs]
+symbol = "\ue718 "
+format = '( \[[$symbol$version]($style)\])'
+style = "bold green"
+
+[golang]
+symbol = "\ue627 "
+format = '( \[[$symbol$version]($style)\])'
+style = "bold cyan"
+
+[rust]
+symbol = "\ue7a8 "
+format = '( \[[$symbol$version]($style)\])'
+style = "bold red"
+
+[java]
+symbol = "\ue256 "
+format = '( \[[$symbol$version]($style)\])'
+style = "bold red"
+
+[php]
+symbol = "\ue608 "
+format = '( \[[$symbol$version]($style)\])'
+style = "bold purple"
+
+[ruby]
+symbol = "\ue791 "
+format = '( \[[$symbol$version]($style)\])'
+style = "bold red"
+
+[lua]
+symbol = "\ue620 "
+format = '( \[[$symbol$version]($style)\])'
+style = "bold blue"
+
+[c]
+symbol = "\ue61e "
+format = '( \[[$symbol$version]($style)\])'
+style = "bold blue"
+
+[dotnet]
+symbol = "\ue77f "
+format = '( \[[$symbol$version]($style)\])'
+style = "bold blue"
+
+[kotlin]
+symbol = "\ue634 "
+format = '( \[[$symbol$version]($style)\])'
+style = "bold purple"
+
+[docker_context]
+symbol = "\uf308 "
+format = '( \[[$symbol$context]($style)\])'
+style = "bold blue"
+
+[terraform]
+symbol = "\U000f1062 "
+format = '( \[[$symbol$workspace]($style)\])'
+style = "bold purple"
+
+[kubernetes]
+disabled = false
+symbol = "\u2638 "
+format = '( \[[$symbol$context( \($namespace\))]($style)\])'
+style = "bold cyan"
+
+[aws]
+symbol = "\ue7ad "
+format = '( \[[$symbol$profile]($style)\])'
+style = "bold yellow"
+
+[character]
+success_symbol = "[\\$](bold green)"
+error_symbol = "[\\$](bold red)"
