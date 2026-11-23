@@ -1,11 +1,16 @@
 # Carrega o ble.sh antes dos scripts que registram atalhos no Bash.
 if [[ $- == *i* && -t 0 && -t 1 && -t 2 && -z ${BLE_VERSION-} ]]; then
     blesh=${XDG_DATA_HOME:-$HOME/.local/share}/blesh/ble.sh
+    [[ ! -r /usr/share/blesh/ble.sh ]] || blesh=/usr/share/blesh/ble.sh
     [[ ! -r $blesh ]] || source "$blesh" --attach=none
     unset blesh
 fi
 
-[[ ! -r /etc/bashrc ]] || source /etc/bashrc
+if [[ -r /etc/bash.bashrc ]]; then
+    source /etc/bash.bashrc
+elif [[ -r /etc/bashrc ]]; then
+    source /etc/bashrc
+fi
 
 # Mantém os binários locais e o OpenCode no PATH.
 for dir in "$HOME/bin" "$HOME/.local/bin" "$HOME/.opencode/bin"; do

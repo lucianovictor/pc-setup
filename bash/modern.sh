@@ -56,7 +56,13 @@ alias gl='git log --oneline --graph --decorate -15'
 
 # SISTEMA
 alias cls='clear'
-alias update='sudo dnf upgrade --refresh'
+update() {
+  if command -v yay &>/dev/null; then
+    yay -Syu "$@"
+  else
+    sudo pacman -Syu "$@"
+  fi
+}
 alias sysinfo='fastfetch'
 alias top='btop'
 alias ..='cd ..'

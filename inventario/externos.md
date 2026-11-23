@@ -1,6 +1,6 @@
 # Instalações externas
 
-O instalador automatiza Starship, ble.sh, as Nerd Fonts Hack, JetBrainsMono e Meslo e OpenCode. O Fedora fornece `uv` e `kubectl` no setup novo. O [script de aplicativos](../install-apps.sh) instala Ghostty, Zed e Zen Browser.
+A tabela registra instalações do PC com Fedora. No CachyOS, os scripts instalam Starship, as Nerd Fonts Hack, JetBrains Mono e Meslo, OpenCode, uv, kubectl, Ghostty, Zed e Zen Browser pelo `pacman` e o ble.sh pelo `yay`.
 
 | Encontrado no PC | Origem |
 | --- | --- |
