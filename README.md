@@ -11,7 +11,9 @@ Configuração do Bash e instaladores de pacotes para o CachyOS.
 ./install.sh --fish        # Instala o Fish e as ferramentas para o terminal
 ./install.sh --fish-config-only # Aplica somente a configuração do Fish e o tema
 ./install-apps.sh          # Instala só Ghostty, Zed e Zen Browser
+./install-apps.sh --zed    # Instala só o Zed
 ./install-languages.sh     # Instala só as linguagens e ferramentas de desenvolvimento
+./setup-github.sh          # Configura o GitHub CLI e o acesso por SSH
 ```
 
 Execute os scripts como usuário comum. O `pacman` roda com `sudo` para instalar pacotes dos repositórios e atualizar o sistema. O setup principal instala `yay` e `base-devel` pelo `pacman` e usa `yay` como usuário comum para instalar o `blesh-git`. No Bash, o comando `update` usa `yay -Syu` quando disponível e recorre a `sudo pacman -Syu` nas demais instalações.
@@ -19,6 +21,8 @@ Execute os scripts como usuário comum. O `pacman` roda com `sudo` para instalar
 O `install-languages.sh` instala Python com pip e uv, Node.js com npm e npx, o runtime Java 25 e o GCC para C e C++. O setup principal também chama esse script.
 
 O `install-apps.sh` instala Ghostty, Zed e Zen Browser pelo `pacman`. O modo `--apps` também instala Kitty, Qtile, Rofi, i3status, feh, VLC, qBittorrent, RetroArch, Bitwarden, Discord, Spotify Launcher, Podman Desktop e Obsidian.
+
+Execute `./setup-github.sh` em um terminal interativo. Ele instala Git, GitHub CLI e OpenSSH se necessário. Durante o login, selecione uma chave pública existente ou aceite criar uma e autorize o acesso no navegador. O script verifica o login e o acesso por SSH. Para usar SSH em um repositório clonado por HTTPS, ajuste o remoto dentro do repositório com `git remote set-url origin git@github.com:USUARIO/REPOSITORIO.git`.
 
 O instalador copia o `bash/bashrc` para `~/.bashrc`, o `bash/modern.sh` para `~/.config/bash/modern.sh` e o tema para `~/.config/starship.toml`. Se algum desses arquivos já existir e for diferente, ele salva uma cópia `*.bak.*` ao lado antes de substituir. Abra um novo terminal depois de instalar.
 

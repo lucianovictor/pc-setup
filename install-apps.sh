@@ -2,12 +2,12 @@
 set -euo pipefail
 
 if [[ ${1-} == --help || ${1-} == -h ]]; then
-    printf 'Uso: %s\nInstala Ghostty, Zed e Zen Browser no CachyOS.\n' "$0"
+    printf 'Uso: %s [--zed]\nInstala Ghostty, Zed e Zen Browser no CachyOS. Use --zed para instalar só o Zed.\n' "$0"
     exit 0
 fi
 
-if (( $# != 0 || EUID == 0 )); then
-    printf 'Execute com seu usuário comum e sem argumentos.\n' >&2
+if (( $# > 1 || EUID == 0 )) || [[ -n ${1-} && $1 != --zed ]]; then
+    printf 'Execute com seu usuário comum. Use %s --help para ver as opções.\n' "$0" >&2
     exit 2
 fi
 
@@ -17,6 +17,11 @@ if [[ ${ID-} != cachyos ]]; then
     exit 1
 fi
 
-sudo pacman -Syu --needed ghostty zed zen-browser-bin
+if [[ ${1-} == --zed ]]; then
+    sudo pacman -Syu --needed zed
+    printf 'Zed está instalado.\n'
+    exit 0
+fi
 
+sudo pacman -Syu --needed ghostty zed zen-browser-bin
 printf 'Ghostty, Zed e Zen Browser estão instalados.\n'
